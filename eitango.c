@@ -1,20 +1,20 @@
 #include<stdio.h>
+#include<ctype.h>
+#include<string.h>
+#include<stdlib.h>
 
 //関数の定義
-void eiken();
+
 void toeic();
+void eiken();
 void exit();
 
-char eibun[200];
-char kotae [200];
-char nihonbun[200];
-char seiseki[100][2];
 int main(){
 	int choice=0;
 	printf("select mode\n");
 	printf("1--ZETTAI　TOEIC　QUESTION\n");
 	printf("2--ZETTAI　EIKEN　QUESTION\n");
-	printf("3-- exit\n");
+	printf("3--exit\n");
 
 	scanf("%i",&choice);
 
@@ -26,9 +26,9 @@ int main(){
 		case 2:
 			eiken();
 			break;
-		case 3:
-			exit();
-			break;
+		//case 3:
+		//	exit();
+		//	break;
 		default :
 			printf("無効な入力です\n");
 			break;
@@ -36,30 +36,29 @@ int main(){
 }
 
 void toeic(){
-	int i,j,k;
-	FILE *fi,*fj,*fk;
+	int i;
+	FILE *fi;
+	char eibun[200];
+	char kotae [200];
+	char nihonbun[200];
+	char seiseki[100][2];
 	fi=fopen("toeic-eibun.txt","r");
-	while(fscanf(fi,"%s",&eibun[i])!=EOF){
-		i++;
+	for(i=0;i<20;i++){
+		fscanf(fi,"%s",&(eibun[i]));
 	}
 	fclose(fi);
-
-	fj=fopen("toeic-nihonbun.txt","r");
-	while(fscanf(fj,"%s",&nihonbun[j])!=EOF){
-		j++;
+	for(i=0;i<20;i++){
+		printf("%s\n",eibun[i]);
 	}
-	fclose(fj);
-
-	fk=fopen("toiec-kotae.txt","r");
-	while(fscanf(fk,"%s",&kotae[k])!=EOF){
-		k++;
-	}
-	fclose(fk);
-	printf("SINE\n");
-	//for(i=0;i<200;i++){
-	//	printf("%s",eibun[i]);
 }
+
+void eiken(){
+	printf("sine\n");
+	}
+//void exit(){
+//	printf("sine\n");
+//}
 
 	
-void eiken(){
-}
+
+	
