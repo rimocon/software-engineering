@@ -26,39 +26,54 @@ int main(){
 		case 2:
 			eiken();
 			break;
-		//case 3:
-		//	exit();
-		//	break;
+			//case 3:
+			//	exit();
+			//	break;
 		default :
 			printf("無効な入力です\n");
 			break;
-		}
+	}
 }
 
 void toeic(){
 	int i;
-	FILE *fi;
+	FILE *fi,*fj,*fk;
 	char eibun[200];
 	char kotae [200];
 	char nihonbun[200];
-	char seiseki[100][2];
+	char answer[200];
+	char score[40];
+
 	fi=fopen("toeic-eibun.txt","r");
-	for(i=0;i<20;i++){
-		fscanf(fi,"%s",&(eibun[i]));
+	fj=fopen("toeic-nihonbun.txt","r");
+	fk=fopen("toeic-kotae.txt","r");
+
+	while(fgets(eibun,200,fi)!=0 && fgets(nihonbun,200,fj)!=0 && fgets(kotae,200,fk)!=0){
+		printf("問題の英文:     %s",eibun);
+		printf("問題の日本語訳: %s",nihonbun);
+		printf("あなたの答え: ");
+		fgets(answer,200,stdin);
+		printf("解答: %s",kotae);
+		if(strcmp(answer,kotae)==0){
+			printf("正解\n");
+		}else{
+			printf("不正解\n");
+		}
+		
 	}
 	fclose(fi);
-	for(i=0;i<20;i++){
-		printf("%s\n",eibun[i]);
-	}
+	fclose(fj);
+	fclose(fk);
+
 }
 
 void eiken(){
 	printf("sine\n");
-	}
+}
 //void exit(){
 //	printf("sine\n");
 //}
 
-	
 
-	
+
+
